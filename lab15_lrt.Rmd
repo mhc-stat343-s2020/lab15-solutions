@@ -1,0 +1,49 @@
+---
+title: "Lab 15: Likelihood Ratio Tests"
+output:
+  pdf_document:
+    keep_tex: true
+header-includes:
+   - \usepackage{booktabs}
+geometry: margin=1.5cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+```
+
+Let's continue the likelihood ratio test example from the handout on April 20.  As a reminder, here is our set up:
+
+$X_1, \ldots, X_5 \sim \text{Normal}(\theta, 5^2)$
+
+We want to test the hypotheses
+
+$H_0: \theta = 25$
+$H_A: \theta = 10$
+
+Suppose we observe a sample mean of $\bar{x} = 20$ based on a sample of $n = 5$ observations.
+
+#### (a) Suppose the null hypothesis of the test is true.  What is the distribution of the sample mean $\bar{X}$?
+
+$\bar{X} \sim \text{Normal}(25, 5)$
+
+The mean is from the null hypothesis specification.  Note that the variance was divided by 5.
+
+#### (b) Find the p-value for the likelihood ratio test.
+
+```{r}
+pnorm(20, mean = 25, sd = sqrt(5))
+```
+
+#### (c) Suppose that the alternative hypothesis is $H_A: \theta = 0$ instead of $H_A: \theta = 10$.  Would the p-value for the test change?  You don't need to actually calculate a p-value.  Justify your answer in a few words.
+
+The p-value would be the same because the form of the p-value calculation for this test is determined only by whether the value of $\theta$ in the alternative hypothesis is less than the value from the null hypothesis or greater than it.
+
+#### (d) How about if the alternative hypothesis was $H_A: \theta = 20$.  Would the p-value for the test change?  You don't need to actually calculate a p-value.  Justify your answer in a few words.
+
+The p-value would be the same because the form of the p-value calculation for this test is determined only by whether the value of $\theta$ in the alternative hypothesis is less than the value from the null hypothesis or greater than it.
+
+#### (e) How about if the alternative hypothesis was $H_A: \theta = 25.1$.  Would the p-value for the test change?  You don't need to actually calculate a p-value.  Justify your answer in a few words.
+
+The p-value would be different because in this case the value of $\theta$ specified in the alternative hypothesis is greater than the value of $\theta$ specified in the null hypothesis.
